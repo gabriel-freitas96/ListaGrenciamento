@@ -19,35 +19,35 @@ public class Lista {
 			System.out.println("7-listar 📄 atividade.");
 			System.out.println("8-Sair 🚪 do sistema...");
 			System.out.println("-".repeat(40));
-            		System.out.println("digite sua opção: ");
+            System.out.println("digite sua opção: ");
 			int opcao=sc.nextInt();
 			sc.nextLine();
 			
-		switch(opcao) {
-		case 1:{
-			System.out.print("Digite o título: ");
-                	String titulo = sc.nextLine();
-                	System.out.print("Digite a descrição: ");
-                	String descricao = sc.nextLine();
-                	System.out.print("Digite o status: ");
-                	String status = sc.nextLine();
+			switch(opcao) {
+			case 1:{
+				System.out.print("Digite o título: ");
+                String titulo = sc.nextLine();
+                System.out.print("Digite a descrição: ");
+                String descricao = sc.nextLine();
+                System.out.print("Digite o status: ");
+                String status = sc.nextLine();
 
-                	String atividade = "Título: " + titulo + " | Descrição: " + descricao + " | Status: " + status;
-                	gerenciamento.add(atividade);
-                	System.out.println("Atividade adicionada com sucesso!");
-                	break;
+                String atividade = "Título: " + titulo + " | Descrição: " + descricao + " | Status: " + status;
+                gerenciamento.add(atividade);
+                System.out.println("Atividade adicionada com sucesso!");
+                break;
             }
 
-		case 2:{
-			System.out.print("Digite o título da atividade que deseja pesquisar: ");
-                 	String tituloBuscar = sc.nextLine().toLowerCase();
-                 	boolean encontrada = false;
+			case 2:{
+				 System.out.print("Digite o título da atividade que deseja pesquisar: ");
+                 String tituloBuscar = sc.nextLine().toLowerCase();
+                 boolean encontrada = false;
 
-                 	for (String atividade : gerenciamento) {
-                     	if (atividade.toLowerCase().contains("título: " + tituloBuscar)) {
-                         	System.out.println("Atividade encontrada:");
-                         	System.out.println(atividade);
-                         	encontrada = true;
+                 for (String atividade : gerenciamento) {
+                     if (atividade.toLowerCase().contains("título: " + tituloBuscar)) {
+                         System.out.println("Atividade encontrada:");
+                         System.out.println(atividade);
+                         encontrada = true;
                          break;
                      }
                  }
@@ -57,7 +57,7 @@ public class Lista {
                  }
                  break;
              }
-		case 3:{
+			case 3:{
 				System.out.println("digite o titulo da atividade que deseja atualizar: ");
 				String TituloAntigo=sc.nextLine();
 				if (gerenciamento.contains(TituloAntigo)) {
