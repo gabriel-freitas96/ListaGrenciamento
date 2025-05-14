@@ -131,52 +131,53 @@ public class Lista {
 
 					
 			case 7:{
-				System.out.println("1-Listar Todas as Atividades");
-				System.out.println("2-Listar Apenas Atividades Pendentes");
-				System.out.println("3-Listar Apenas Atividades Em andamento");
-				System.out.println("4-Listar Apenas Atividades Concluídas");
-				System.out.println("5-Voltar ao Menu Principal");
-				System.out.println("Digite sua opção: ");
-				int opcaoAtv=sc.nextInt();
-				sc.nextLine();
-				switch(opcaoAtv) {
-				case 1:
-					for (String atividade : gerenciamento) {
-		                System.out.println(atividade);
+						System.out.println("1-Listar Todas as Atividades");
+						System.out.println("2-Listar Apenas Atividades Pendentes");
+						System.out.println("3-Listar Apenas Atividades Em andamento");
+						System.out.println("4-Listar Apenas Atividades Concluídas");
+						System.out.println("5-Voltar ao Menu Principal");
+						System.out.println("Digite sua opção: ");
+						int opcaoAtv=sc.nextInt();
+						sc.nextLine();
+						 for (int i = 0; i < gerenciamento.size(); i += 3) {
+						        if (i + 2 >= gerenciamento.size()) break;
+						        String titulo = gerenciamento.get(i);
+						        String descricao = gerenciamento.get(i + 1);
+						        String status = gerenciamento.get(i + 2);
+
+						switch(opcaoAtv) {
+						case 1:
+			                atv = true;
+			                break;
+			            case 2:
+			                if (status.equals("pendente")) 
+			                	atv = true;
+			                break;
+			            case 3:
+			                if (status.equals("em andamento")) 
+			                	atv = true;
+			                break;
+			            case 4:
+			                if (status.equals("concluída") || status.equals("concluida")) 
+			                	atv = true;
+			                break;
+			            case 5:
+			                return;
+			            default:
+			                System.out.println("Opção inválida.");
+			                break;
+		                     
+		                
+		             }
+						if (atv) {
+						            System.out.println("Título: " + titulo);
+						            System.out.println("Descrição: " + descricao);
+						            System.out.println("Status: " + status);
+						            System.out.println("-".repeat(60));
+						}
+						 }
+						 break;
 					}
-					break;
-				
-					
-				case 2:
-					 for (String atividade : gerenciamento) {
-			                if (atividade.toLowerCase().contains("pendente")) {
-			                    System.out.println(atividade);
-			                }
-			            }
-			            break;
-				 case 3:
-					 for (String atividade : gerenciamento) {
-			                if (atividade.toLowerCase().contains("em andamento")) {
-			                    System.out.println(atividade);
-			                }
-			            }
-			            break;
-                 case 4:
-                	 for (String atividade : gerenciamento) {
-                         if (atividade.toLowerCase().contains("concluída")) {
-                             System.out.println(atividade);
-                         }
-                     }
-                     break;
-                 case 5:
-                     break;
-                 default:
-                     System.out.println("Opção inválida.");
-                     
-                
-             }
-         }
-         break;
 			case 8:
 	            System.out.println("Saindo do sistema,Obrigado!");
 	            break;
