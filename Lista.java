@@ -92,11 +92,11 @@ public class Lista {
 				
 			case 5: {
 			   	    System.out.print("Digite o título da atividade que deseja iniciar: ");
-				    String tituloIniciar = sc.nextLine().toLowerCase().trim();
+				    String tituloIniciar = sc.nextLine();
 				    boolean encontrada = false;
 
 				    for (int i = 0; i < gerenciamento.size(); i++) {
-				        String atividade = gerenciamento.get(i).toLowerCase();
+				        String atividade = gerenciamento.get(i);
 				        
 				        if (atividade.contains("título: " + tituloIniciar)) {
 				            encontrada = true;
@@ -108,7 +108,7 @@ public class Lista {
 				                System.out.println(gerenciamento.get(i));
 				            } else {
 				                String original = gerenciamento.get(i);
-				                String novaAtividade = original.replaceAll("(?i)status: .*", "Status: em andamento");
+				                String novaAtividade = original.replaceAll("", "Status: em andamento");
 				                gerenciamento.set(i, novaAtividade);
 				                System.out.println("Atividade atualizada para 'em andamento':");
 				                System.out.println(novaAtividade);
@@ -122,6 +122,7 @@ public class Lista {
 				    }
 				    break;
 				}
+
 			case 6:{
 				System.out.println("digite o titulo da atividade que deseja fnalizar: ");
 				String TituloFinalizar=sc.nextLine();
