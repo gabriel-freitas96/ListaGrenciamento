@@ -38,7 +38,7 @@ public class Lista {
 				gerenciamento.add(status);
 				System.out.println("Atividade criada com sucesso!");
 				break;
-            }
+            	}
 
 			case 2:{
 				System.out.println("Digite o título da atividade: ");
@@ -52,39 +52,37 @@ public class Lista {
 					System.out.println("Nenhuma atividade encontrada!");
 					}
 				break;
-			
-			}
+				}
 				
 			case 3:{
-						System.out.println("Digite o título da atividade que deseja remover: ");
-						String remover = sc.nextLine();
-						boolean removido = false;
-						for (int i = 0; i < gerenciamento.size(); i += 3) {
-					        if (i + 2 >= gerenciamento.size()) break;
-					        String titulo = gerenciamento.get(i);
-					        if (titulo.toLowerCase().contains(remover.toLowerCase())) {
-					            System.out.println("Removendo atividade:");
-					            System.out.println("Título: " + gerenciamento.get(i));
-					            System.out.println("Descrição: " + gerenciamento.get(i + 1));
-					            System.out.println("Status: " + gerenciamento.get(i + 2));
+				System.out.println("Digite o título da atividade que deseja remover: ");
+				String remover = sc.nextLine();
+				boolean removido = false;
+				for (int i = 0; i < gerenciamento.size(); i += 3) {
+			        if (i + 2 >= gerenciamento.size()) break;
+			        String titulo = gerenciamento.get(i);
+			        if (titulo.toLowerCase().contains(remover.toLowerCase())) {
+			            System.out.println("Removendo atividade:");
+			            System.out.println("Título: " + gerenciamento.get(i));
+			            System.out.println("Descrição: " + gerenciamento.get(i + 1));
+			            System.out.println("Status: " + gerenciamento.get(i + 2));
 
-					            gerenciamento.remove(i);
-					            gerenciamento.remove(i);
-					            gerenciamento.remove(i);
-					            removido = true;
-					            System.out.println("Atividade removida com sucesso!");
-					            break;
-					        }
-					    }
-
-					    if (!removido) {
-					        System.out.println("Nenhuma atividade com esse título encontrada.");
-					    }
-
-					    break;
+			            gerenciamento.remove(i);
+			            gerenciamento.remove(i);
+			            gerenciamento.remove(i);
+			            removido = true;
+			            System.out.println("Atividade removida com sucesso!");
+			            break;
+			        	}
 					}
-			
-				
+
+			    if (!removido) {
+			        System.out.println("Nenhuma atividade com esse título encontrada.");
+			    }
+
+			    break;
+				}
+		
 			case 4: {
 				System.out.println("Digite o título da ativida que deseja atualizar: ");
 				String updtitulo = sc.nextLine();
@@ -157,62 +155,61 @@ public class Lista {
 						System.out.println("4-Listar Apenas Atividades Concluídas");
 						System.out.println("5-Voltar ao Menu Principal");
 						System.out.println("Digite sua opção: ");
-						int opcaoAtv = sc.nextInt();
+						int opcaoAtv=sc.nextInt();
 						sc.nextLine();
+						 for (int i = 0; i < gerenciamento.size(); i += 3) {
+						        if (i + 2 >= gerenciamento.size()) break;
+						        String titulo = gerenciamento.get(i);
+						        String descricao = gerenciamento.get(i + 1);
+						        String status = gerenciamento.get(i + 2);
 
-						if (opcaoAtv == 5) break;
-
-						for (int i = 0; i < gerenciamento.size(); i += 3) {
-						    if (i + 2 >= gerenciamento.size()) break;
-
-						    String titulo = gerenciamento.get(i);
-						    String descricao = gerenciamento.get(i + 1);
-						    String status = gerenciamento.get(i + 2).toLowerCase();
-
-						    boolean exibir = false;
-
-						    switch (opcaoAtv) {
-						        case 1:
-						            exibir = true;
-						            break;
-						        case 2:
-						            if (status.equals("pendente")) exibir = true;
-						            break;
-						        case 3:
-						            if (status.equals("em andamento")) exibir = true;
-						            break;
-						        case 4:
-						            if (status.equals("concluída") || status.equals("concluida")) exibir = true;
-						            break;
-						        default:
-						            System.out.println("Opção inválida.");
-						            return; 
-						    }
-
-						    if (exibir) {
-						        System.out.println("Título: " + titulo);
-						        System.out.println("Descrição: " + descricao);
-						        System.out.println("Status: " + status);
-						        System.out.println("-".repeat(60));
-						    }
+						switch(opcaoAtv) {
+						case 1:
+			                atv = true;
+			                break;
+			            case 2:
+			                if (status.equals("pendente")) 
+			                	atv = true;
+			                break;
+			            case 3:
+			                if (status.equals("em andamento")) 
+			                	atv = true;
+			                break;
+			            case 4:
+			                if (status.equals("concluída") || status.equals("concluida")) 
+			                	atv = true;
+			                break;
+			            case 5:
+			                return;
+			            default:
+			                System.out.println("Opção inválida.");
+			                break;
+		                     
+		                
+		             }
+						if (atv) {
+						            System.out.println("Título: " + titulo);
+						            System.out.println("Descrição: " + descricao);
+						            System.out.println("Status: " + status);
+						            System.out.println("-".repeat(60));
 						}
-
-						}
-					break;
-			case 8:
-	            System.out.println("Saindo do sistema,Obrigado!");
-	            break;
-	        default:
-	            System.out.println("Opção inválida.");
-	    } 
+						 }
+						 break;
+					}
+			case 8:{
+				 System.out.println("Saindo do sistema,Obrigado!");
+		            break;
+		    		}
+			 default:
+		            System.out.println("Opção inválida.");
+	           
+				}
 
 		}
 		sc.close();
 	}
 
-	
-
-	}
+}
 
 
 
@@ -224,4 +221,7 @@ public class Lista {
 
 
 
+		
+	
+				
 		
