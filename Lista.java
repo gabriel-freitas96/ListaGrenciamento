@@ -91,28 +91,37 @@ public class Lista {
 				}
 				
 			case 5: {
-			    System.out.print("Digite o título da atividade que deseja iniciar: ");
-			    String tituloIniciar = sc.nextLine().toLowerCase();
-			    boolean encontrada = false;
-			    for (int i = 0; i < gerenciamento.size(); i++) {
-			        String atividade = gerenciamento.get(i).toLowerCase();
-			        if (atividade.contains("título: " + tituloIniciar)) {
-			            String original = gerenciamento.get(i);
-			            String novaAtividade = original.replaceAll("(?i)status: .*", "Status: em andamento");
-			            gerenciamento.set(i, novaAtividade);
-			            System.out.println("Atividade atualizada para 'em andamento':");
-			            System.out.println(novaAtividade);
-			            encontrada = true;
-			            break;
-			         }
-			    	 }
-			    if (!encontrada) {
-			        System.out.println("Atividade não encontrada.");
-                }
-                break;
-			
-			    	 }
+			   	    System.out.print("Digite o título da atividade que deseja iniciar: ");
+				    String tituloIniciar = sc.nextLine().toLowerCase().trim();
+				    boolean encontrada = false;
 
+				    for (int i = 0; i < gerenciamento.size(); i++) {
+				        String atividade = gerenciamento.get(i).toLowerCase();
+				        
+				        if (atividade.contains("título: " + tituloIniciar)) {
+				            encontrada = true;
+				            if (atividade.contains("status: concluída")) {
+				                System.out.println("Essa atividade já foi concluída:");
+				                System.out.println(gerenciamento.get(i));
+				            } else if (atividade.contains("status: em andamento")) {
+				                System.out.println("Essa atividade já está em andamento:");
+				                System.out.println(gerenciamento.get(i));
+				            } else {
+				                String original = gerenciamento.get(i);
+				                String novaAtividade = original.replaceAll("(?i)status: .*", "Status: em andamento");
+				                gerenciamento.set(i, novaAtividade);
+				                System.out.println("Atividade atualizada para 'em andamento':");
+				                System.out.println(novaAtividade);
+				            }
+				            break;
+				        }
+				    }
+
+				    if (!encontrada) {
+				        System.out.println("Atividade não encontrada.");
+				    }
+				    break;
+				}
 			case 6:{
 				System.out.println("digite o titulo da atividade que deseja fnalizar: ");
 				String TituloFinalizar=sc.nextLine();
