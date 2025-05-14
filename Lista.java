@@ -9,72 +9,53 @@ public class Lista {
 		Scanner sc=new Scanner(System.in);
 		
 		while(atv) {
-			System.out.println("Gerenciamento de atividade"+"-".repeat(10));
-			System.out.println("1-Adicionar ➕ atividade.");
-			System.out.println("2-Pesquisar 🔍 por título.");
-			System.out.println("3-Atualizar ✏️ atividade por título.");
-			System.out.println("4-remover ❌ atividade por título.");
-			System.out.println("5-iniciar ▶️ atividade.");
-			System.out.println("6- Finalizar ✅ atividade.");
-			System.out.println("7-listar 📄 atividade.");
-			System.out.println("8-Sair 🚪 do sistema...");
-			System.out.println("-".repeat(40));
-            System.out.println("digite sua opção: ");
+			System.out.println("-".repeat(10) + " Sistema de Gerenciamento de Atividades " + "-".repeat(10));
+			System.out.println(" \n Menu com as opções : \n ");
+			System.out.println("Digite (1) para (Adicionar ➕) nova atividade.");
+			System.out.println("Digite (2) para (Pesquisar 🔍) atividade por título.");
+			System.out.println("Digite (3) para (Excluir 🗑️) atividade pelo título.");
+			System.out.println("Digite (4) para (Atualizar 🆕) atividade pelo título.");
+			System.out.println("Digite (5) para (Iniciar ▶️) atividade.");
+			System.out.println("Digite (6) para (Finalizar ✅) atividade.");
+			System.out.println("Digite (7) para (Listar 📝) atividades.");
+			System.out.println("Digite (8) para (Sair ➡️) do sistema.");
+			System.out.println("-".repeat(60));
+			System.out.println("Escolha uma opção: ");
+			
 			int opcao=sc.nextInt();
 			sc.nextLine();
 			
 			switch(opcao) {
 			case 1:{
-				System.out.print("Digite o título: ");
-                String titulo = sc.nextLine();
-                System.out.print("Digite a descrição: ");
-                String descricao = sc.nextLine();
-                System.out.print("Digite o status: ");
-                String status = sc.nextLine();
-
-                String atividade = "Título: " + titulo + " | Descrição: " + descricao + " | Status: " + status;
-                gerenciamento.add(atividade);
-                System.out.println("Atividade adicionada com sucesso!");
-                break;
+				System.out.println("Digite um título para atividade: ");
+				String titulo = sc.nextLine();
+				System.out.println("Agora, crie uma descrição para a atividade: ");
+				String descricao = sc.nextLine();
+				System.out.println("Qual o status da atividade (pendente, em andamento ou concluída)?: ");
+				String status = sc.nextLine();
+				gerenciamento.add(titulo);
+				gerenciamento.add(descricao);
+				gerenciamento.add(status);
+				System.out.println("Atividade criada com sucesso!");
+				break;
             }
 
 			case 2:{
-				 System.out.print("Digite o título da atividade que deseja pesquisar: ");
-                 String tituloBuscar = sc.nextLine().toLowerCase();
-                 boolean encontrada = false;
-
-                 for (String atividade : gerenciamento) {
-                     if (atividade.toLowerCase().contains("título: " + tituloBuscar)) {
-                         System.out.println("Atividade encontrada:");
-                         System.out.println(atividade);
-                         encontrada = true;
-                         break;
-                     }
-                 }
-
-                 if (!encontrada) {
-                     System.out.println("Atividade não encontrada.");
-                 }
-                 break;
-             }
-			case 3:{
-				System.out.println("digite o titulo da atividade que deseja atualizar: ");
-				String TituloAntigo=sc.nextLine();
-				if (gerenciamento.contains(TituloAntigo)) {
-                    System.out.print("Digite o novo título: ");
-					String novoTitulo=sc.nextLine();
-					int index = gerenciamento.indexOf(TituloAntigo);
-					gerenciamento.set(index, novoTitulo);
-                    System.out.println("Atividade atualizada.");
-				  } else {
-                      System.out.println("Atividade não encontrada.");
-                  }
-                  break;
-
+				System.out.println("Digite o título da atividade: ");
+				String pesquisa = sc.nextLine();
+				if(gerenciamento.contains(pesquisa)) {
+					int ind = gerenciamento.indexOf(pesquisa);
+					System.out.println(pesquisa + " conta no sistema.");
+					System.out.println("\nInformações da atividade: \nTítulo:  " + gerenciamento.get(ind) + "\nDescrição: " + gerenciamento.get(ind+1) + "\nStatus: " + gerenciamento.get(ind+2));
 					}
+				else {
+					System.out.println("Nenhuma atividade encontrada!");
+					}
+				break;
+			
+			}
 				
-
-			case 4: {
+			case 3:{
 				System.out.println("Digite o título da atividade que deseja remover: ");
 				String remover = sc.nextLine();
 				if (gerenciamento.remove(remover)) {
@@ -82,6 +63,33 @@ public class Lista {
 				break;
 				}
 			}
+			
+				
+			case 4: {
+				System.out.println("Digite o título da ativida que deseja atualizar: ");
+				String updtitulo = sc.nextLine();
+				
+				int indTitulo = gerenciamento.indexOf(updtitulo);
+				String updDescricao = gerenciamento.get(indTitulo + 1);
+					
+				int i = gerenciamento.indexOf(updtitulo);
+				int x = gerenciamento.indexOf(updDescricao);
+					
+				if(i < 0 && x < 0) {
+					System.out.println("Não há nenhuma atividade com esse título. Por favor,tente novamente.");
+					}
+				else {
+					System.out.println("Digite um novo título para a atividade encontrada: ");
+					String novoTitulo = sc.nextLine();
+					System.out.println("Digite uma nova descrição para a atividade: ");
+					String novaDescricao = sc.nextLine();
+					gerenciamento.set(i,novoTitulo);
+					gerenciamento.set(x,novaDescricao);
+					System.out.println("Título e Descrição modificados com sucesso!");
+					}
+				break;
+				}
+				
 			case 5: {
 			    System.out.print("Digite o título da atividade que deseja iniciar: ");
 			    String tituloIniciar = sc.nextLine().toLowerCase();
@@ -183,6 +191,8 @@ public class Lista {
 
 	
 
-	}
+	
 
 
+
+		
