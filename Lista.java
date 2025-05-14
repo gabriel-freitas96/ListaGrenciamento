@@ -111,14 +111,22 @@ public class Lista {
 			   	  }
 
 			case 6:{
-				System.out.println("digite o titulo da atividade que deseja fnalizar: ");
-				String TituloFinalizar=sc.nextLine();
-				 if (gerenciamento.contains(TituloFinalizar)) {
-                     System.out.println("Atividade finalizada com sucesso." + TituloFinalizar);
-                 } else {
-                     System.out.println("Atividade não encontrada.");
-                 }
-                 break;
+				System.out.println("Digite o título da atividade: ");
+				String tituloAtividade = sc.nextLine();
+				if(gerenciamento.contains(tituloAtividade)){
+					if(gerenciamento.get(2).equals("em andamento")) {
+						System.out.println("Atividade em andamento.");
+						String statusAntigo = "em andamento";
+						int s = gerenciamento.indexOf(statusAntigo);
+						String novoStatus = "concluida";
+						gerenciamento.set(s,novoStatus);
+						System.out.println("Atividade foi concluida com sucesso!");
+						}
+						}
+				else {
+					System.out.println("Não há nenhuma atividade com esse título.");
+					}
+				break;
 			}
 
 					
@@ -188,6 +196,7 @@ public class Lista {
 
 		
 	
+
 
 	
 
