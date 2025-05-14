@@ -91,43 +91,30 @@ public class Lista {
 				}
 				
 			case 5: {
-			   	    System.out.print("Digite o título da atividade que deseja iniciar: ");
-				    String tituloIniciar = sc.nextLine();
-				    boolean encontrada = false;
 
-				    for (int i = 0; i < gerenciamento.size(); i++) {
-				        String atividade = gerenciamento.get(i);
-				        
-				        if (atividade.contains("título: " + tituloIniciar)) {
-				            encontrada = true;
-				            if (atividade.contains("status: concluída")) {
-				                System.out.println("Essa atividade já foi concluída:");
-				                System.out.println(gerenciamento.get(i));
-				            } else if (atividade.contains("status: em andamento")) {
-				                System.out.println("Essa atividade já está em andamento:");
-				                System.out.println(gerenciamento.get(i));
-				            } else {
-				                String original = gerenciamento.get(i);
-				                String novaAtividade = original.replaceAll("", "Status: em andamento");
-				                gerenciamento.set(i, novaAtividade);
-				                System.out.println("Atividade atualizada para 'em andamento':");
-				                System.out.println(novaAtividade);
-				            }
-				            break;
-				        }
-				    }
-
-				    if (!encontrada) {
-				        System.out.println("Atividade não encontrada.");
-				    }
-				    break;
-				}
+				System.out.println("Digite o título da atividade: ");
+				String tituloAtividade = sc.nextLine();
+				if(gerenciamento.contains(tituloAtividade)){
+					if(gerenciamento.get(2).equals("pendente")) {
+						System.out.println("Atividade pendente.");
+						String statusAntigo = "pendente";
+						int s = gerenciamento.indexOf(statusAntigo);
+						String novoStatus = "em andamento";
+						gerenciamento.set(s,novoStatus);
+						System.out.println("Atividade foi iniciada com sucesso!");
+						}
+						}
+				else {
+					System.out.println("Não há nenhuma atividade com esse título.");
+					}
+					break;
+			   	  }
 
 			case 6:{
 				System.out.println("digite o titulo da atividade que deseja fnalizar: ");
 				String TituloFinalizar=sc.nextLine();
 				 if (gerenciamento.contains(TituloFinalizar)) {
-                     System.out.println("Atividade marcada como 'concluída': " + TituloFinalizar);
+                     System.out.println("Atividade finalizada com sucesso." + TituloFinalizar);
                  } else {
                      System.out.println("Atividade não encontrada.");
                  }
@@ -199,6 +186,7 @@ public class Lista {
 
 
 
+		
 	
 
 	
