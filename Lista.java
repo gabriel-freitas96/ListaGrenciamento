@@ -2,7 +2,6 @@ cimport java.util.ArrayList;
 import java.util.Scanner;
 
 public class Lista {
-
 	public static void main(String[] args) {
 		ArrayList<String>gerenciamento=new ArrayList<String>();
 		boolean atv=true;
@@ -55,34 +54,26 @@ public class Lista {
 				}
 				
 			case 3:{
-				System.out.println("Digite o título da atividade que deseja remover: ");
-				String remover = sc.nextLine();
-				boolean removido = false;
-				for (int i = 0; i < gerenciamento.size(); i += 3) {
-			        if (i + 2 >= gerenciamento.size()) break;
-			        String titulo = gerenciamento.get(i);
-			        if (titulo.toLowerCase().contains(remover.toLowerCase())) {
-			            System.out.println("Removendo atividade:");
-			            System.out.println("Título: " + gerenciamento.get(i));
-			            System.out.println("Descrição: " + gerenciamento.get(i + 1));
-			            System.out.println("Status: " + gerenciamento.get(i + 2));
-
-			            gerenciamento.remove(i);
-			            gerenciamento.remove(i);
-			            gerenciamento.remove(i);
-			            removido = true;
-			            System.out.println("Atividade removida com sucesso!");
-			            break;
-			        	}
+				System.err.println("Digite o título para remover a atividade: ");
+				String remocao = sc.nextLine();
+				if(gerenciamento.contains(remocao)) {
+					System.out.println("Atividade encontrada.\n Removendo atividade...");
+					int inTitulo = gerenciamento.indexOf(remocao);
+					String t = gerenciamento.get(inTitulo);
+					String d = gerenciamento.get(inTitulo+1);
+					String s = gerenciamento.get(inTitulo+2);
+					
+					gerenciamento.remove(t);
+					gerenciamento.remove(d);
+					gerenciamento.remove(s);
+					System.out.println("Atividade removida com sucesso!");
+						}
+				else {
+						System.out.println("Atividade não foi encontrada.");
+						}
+				break;
 					}
-
-			    if (!removido) {
-			        System.out.println("Nenhuma atividade com esse título encontrada.");
-			    }
-
-			    break;
-				}
-		
+				
 			case 4: {
 				System.out.println("Digite o título da ativida que deseja atualizar: ");
 				String updtitulo = sc.nextLine();
@@ -218,6 +209,11 @@ public class Lista {
 	
 
 
+	
+
+
+
+		
 	
 
 
