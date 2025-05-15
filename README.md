@@ -103,3 +103,6 @@ Todas as operações fornecem mensagens claras para orientar o usuário, como:
 ---
 
 ## 📎 Autor
+-Gabriel Lacerda
+-Miguel Viana
+-Samires
