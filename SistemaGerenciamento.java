@@ -151,10 +151,10 @@ public class SistemaGerenciamento {
 
 						if (opcaoAtv == 5) 
 							break;
-
-						for (int i = 0; i < gerenciamento.size(); i += 3) {
+					    boolean encontrouAlguma = false;
+					    for (int i = 0; i < gerenciamento.size(); i += 3) {
 						    if (i + 2 >= gerenciamento.size()) 
-							    break;
+						    	break;
 
 						    String titulo = gerenciamento.get(i);
 						    String descricao = gerenciamento.get(i + 1);
@@ -181,10 +181,27 @@ public class SistemaGerenciamento {
 						    }
 
 						    if (exibir) {
+						        encontrouAlguma = true;
 						        System.out.println("Título: " + titulo);
 						        System.out.println("Descrição: " + descricao);
 						        System.out.println("Status: " + status);
 						        System.out.println("-".repeat(60));
+						    }
+						}
+						if (!encontrouAlguma) {
+						    switch (opcaoAtv) {
+						        case 1:
+						            System.out.println("Nenhuma atividade encontrada.");
+						            break;
+						        case 2:
+						            System.out.println("Nenhuma atividade pendente encontrada.");
+						            break;
+						        case 3:
+						            System.out.println("Nenhuma atividade em andamento encontrada.");
+						            break;
+						        case 4:
+						            System.out.println("Nenhuma atividade concluída encontrada.");
+						            break;
 						    }
 						}
 
