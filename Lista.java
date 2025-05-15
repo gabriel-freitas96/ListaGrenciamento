@@ -198,7 +198,7 @@ public class Lista {
 					}
 			case 8:{
 				 System.out.println("Saindo do sistema,Obrigado!");
-		            break;
+		            return;
 		    		}
 			 default:
 		            System.out.println("Opção inválida.");
