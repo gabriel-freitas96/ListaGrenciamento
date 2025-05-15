@@ -1,7 +1,7 @@
 cimport java.util.ArrayList;
 import java.util.Scanner;
 
-public class SistemaGerenciamento {
+public class Lista {
 	public static void main(String[] args) {
 		ArrayList<String>gerenciamento=new ArrayList<String>();
 		boolean atv=true;
