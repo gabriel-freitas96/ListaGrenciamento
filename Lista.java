@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+cimport java.util.ArrayList;
 import java.util.Scanner;
 
 public class Lista {
@@ -155,47 +155,48 @@ public class Lista {
 						System.out.println("4-Listar Apenas Atividades Concluídas");
 						System.out.println("5-Voltar ao Menu Principal");
 						System.out.println("Digite sua opção: ");
-						int opcaoAtv=sc.nextInt();
+						int opcaoAtv = sc.nextInt();
 						sc.nextLine();
-						 for (int i = 0; i < gerenciamento.size(); i += 3) {
-						        if (i + 2 >= gerenciamento.size()) break;
-						        String titulo = gerenciamento.get(i);
-						        String descricao = gerenciamento.get(i + 1);
-						        String status = gerenciamento.get(i + 2);
 
-						switch(opcaoAtv) {
-						case 1:
-			                atv = true;
-			                break;
-			            case 2:
-			                if (status.equals("pendente")) 
-			                	atv = true;
-			                break;
-			            case 3:
-			                if (status.equals("em andamento")) 
-			                	atv = true;
-			                break;
-			            case 4:
-			                if (status.equals("concluída") || status.equals("concluida")) 
-			                	atv = true;
-			                break;
-			            case 5:
-			                return;
-			            default:
-			                System.out.println("Opção inválida.");
-			                break;
-		                     
-		                
-		             }
-						if (atv) {
-						            System.out.println("Título: " + titulo);
-						            System.out.println("Descrição: " + descricao);
-						            System.out.println("Status: " + status);
-						            System.out.println("-".repeat(60));
+						if (opcaoAtv == 5) break;
+
+						for (int i = 0; i < gerenciamento.size(); i += 3) {
+						    if (i + 2 >= gerenciamento.size()) break;
+
+						    String titulo = gerenciamento.get(i);
+						    String descricao = gerenciamento.get(i + 1);
+						    String status = gerenciamento.get(i + 2).toLowerCase().trim();
+
+						    boolean exibir = false;
+
+						    switch (opcaoAtv) {
+						        case 1:
+						            exibir = true;
+						            break;
+						        case 2:
+						            if (status.equals("pendente")) exibir = true;
+						            break;
+						        case 3:
+						            if (status.equals("em andamento")) exibir = true;
+						            break;
+						        case 4:
+						            if (status.equals("concluída") || status.equals("concluida")) exibir = true;
+						            break;
+						        default:
+						            System.out.println("Opção inválida.");
+						            return; 
+						    }
+
+						    if (exibir) {
+						        System.out.println("Título: " + titulo);
+						        System.out.println("Descrição: " + descricao);
+						        System.out.println("Status: " + status);
+						        System.out.println("-".repeat(60));
+						    }
 						}
-						 }
-						 break;
-					}
+
+						}
+					break;
 			case 8:{
 				 System.out.println("Saindo do sistema,Obrigado!");
 		            return;
