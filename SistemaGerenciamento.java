@@ -149,10 +149,12 @@ public class SistemaGerenciamento {
 						int opcaoAtv = sc.nextInt();
 						sc.nextLine();
 
-						if (opcaoAtv == 5) break;
+						if (opcaoAtv == 5) 
+							break;
 
 						for (int i = 0; i < gerenciamento.size(); i += 3) {
-						    if (i + 2 >= gerenciamento.size()) break;
+						    if (i + 2 >= gerenciamento.size()) 
+							    break;
 
 						    String titulo = gerenciamento.get(i);
 						    String descricao = gerenciamento.get(i + 1);
