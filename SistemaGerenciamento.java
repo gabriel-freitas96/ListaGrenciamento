@@ -156,7 +156,7 @@ public class SistemaGerenciamento {
 
 						    String titulo = gerenciamento.get(i);
 						    String descricao = gerenciamento.get(i + 1);
-						    String status = gerenciamento.get(i + 2).toLowerCase().trim();
+						    String status = gerenciamento.get(i + 2);
 
 						    boolean exibir = false;
 
